@@ -34,67 +34,67 @@ echo /***********************************************/
 echo Checking for Unattend.xml and related files...\n
 echo /***********************************************/
 echo.
-color 07
+
 :: Check C:\Unattend.xml
 if exist "C:\Unattend.xml" (
     echo Contents of C:\Unattend.xml:
-    color 0A
+   
     type "C:\Unattend.xml"
     echo.
 ) else (
-    color 04
+   
     echo C:\Unattend.xml does not exist.
 )
 
 :: Check C:\Windows\Panther\Unattend.xml
 if exist "C:\Windows\Panther\Unattend.xml" (
-    color 07
+    
     echo Contents of C:\Windows\Panther\Unattend.xml:
-    color 0A
+    
     type "C:\Windows\Panther\Unattend.xml"
     echo.
 ) else (
-    color 04
+    
     echo C:\Windows\Panther\Unattend.xml does not exist.
 )
 
 :: Check C:\Windows\Panther\Unattend\Unattend.xml
 if exist "C:\Windows\Panther\Unattend\Unattend.xml" (
-    color 07
+   
     echo Contents of C:\Windows\Panther\Unattend\Unattend.xml:
-    color 0A
+   
     type "C:\Windows\Panther\Unattend\Unattend.xml"
     echo.
 ) else (
-    color 04
+   
     echo C:\Windows\Panther\Unattend\Unattend.xml does not exist.
 )
 
 :: Check C:\Windows\system32\sysprep.inf
 if exist "C:\Windows\system32\sysprep.inf" (
-    color 07
+   
     echo Contents of C:\Windows\system32\sysprep.inf:
-    color 0A
+    
     type "C:\Windows\system32\sysprep.inf"
 ) else (
-    color 04
+   
     echo C:\Windows\system32\sysprep.inf does not exist.
 )
 
 :: Check C:\Windows\system32\sysprep\sysprep.xml
 if exist "C:\Windows\system32\sysprep\sysprep.xml" (
-    color 07
+   
     echo Contents of C:\Windows\system32\sysprep\sysprep.xml:
-    color 0A
+   
     type "C:\Windows\system32\sysprep\sysprep.xml"
     echo.
 ) else (
-    color 04
+    
     echo C:\Windows\system32\sysprep\sysprep.xml does not exist.
 )
 
 :: Check command history for possible passwords
-color 07
+
 echo.
 echo.
 echo /***********************************************/
@@ -106,29 +106,28 @@ set "history_file=%userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSR
 
 if exist "%history_file%" (
     echo Contents of PowerShell command history:
-    color 0A
+   
     type "%history_file%"
     echo.
 ) else (
-    color 04
+    
     echo PowerShell command history file does not exist.
     echo.
 )
 
 :: Check for saved credentials
-color 07
 echo.
 echo.
 echo /***********************************************/
 echo Checking for saved credentials...
 echo /***********************************************/
 echo.
-color 0D
+
 cmdkey /list
 
 :: Prompt the user to use a saved credential
 echo.
-color 07
+
 set /p use_credential="Do you want to use a saved credential? (y/n): "
 if /i "%use_credential%"=="y" (
     echo Running cmd.exe with the credential: %credential%
@@ -152,10 +151,10 @@ if /i "%check_connections%"=="y" (
         type "C:\inetpub\wwwroot\web.config" | findstr connectionString
         echo.
     ) else (
-        color 04
+        
         echo C:\inetpub\wwwroot\web.config does not exist.
         echo.
-        color 07
+       
     )
 
     if exist "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config" (
@@ -163,10 +162,9 @@ if /i "%check_connections%"=="y" (
         type "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config" | findstr connectionString
         echo.
     ) else (
-        color 04
+        
         echo C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config does not exist.
         echo.
-        color 07
     )
 
     :: Check Chrome, Firefox, and Edge profiles for sensitive data
@@ -179,10 +177,10 @@ if /i "%check_connections%"=="y" (
         type "%chrome_profile%" | findstr /i "password\|username\|connectionString"
         echo.
     ) else (
-        color 04
+        
         echo Chrome profile not found.
         echo.
-        color 07
+        
     )
 
     :: Firefox
@@ -195,10 +193,10 @@ if /i "%check_connections%"=="y" (
             echo.
         )
     ) else (
-        color 04
+        
         echo Firefox profiles not found.
         echo.
-        color 07
+       
     )
 
     :: Edge
@@ -208,10 +206,10 @@ if /i "%check_connections%"=="y" (
         type "%edge_profile%" | findstr /i "password\|username\|connectionString"
         echo.
     ) else (
-        color 04
+       
         echo Edge profile not found.
         echo.
-        color 07
+        
     )
 ) else (
     echo Skipping database connection string check.
