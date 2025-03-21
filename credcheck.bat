@@ -225,7 +225,7 @@ if /i "%check_app_creds%"=="y" (
 
     :: Check PuTTY saved sessions
     echo Checking PuTTY saved sessions...
-    reg query "HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions" /s | findstr /i "Proxy\|HostName\|UserName\|Password"
+    reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
 
     :: Check WinSCP saved sessions
     echo Checking WinSCP saved sessions...
